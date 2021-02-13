@@ -1,0 +1,17 @@
+from PyPDF2 import PdfFileWriter , PdfFileReader
+from PyPDF2 import PdfFileReader
+def secure_pdf(file,password):
+    parser = pw()
+    pdf = pr(file)
+    for page in range(pdf.numPages):
+        parser.addPage(pdf.getPage(page))
+    parser.encrypt(password)
+    with open(f"encrypted_{file}", "wb") as f:
+        parser.write(f)
+        f.close()
+    print(f"encrypted_{file} Created...")
+
+if __name__ == "__main__":
+    file = "D:\\Programming\\Python\\Tutorials\\Tutorialspoint.pdf"
+    password = "123"
+    secure_pdf(file, password)
